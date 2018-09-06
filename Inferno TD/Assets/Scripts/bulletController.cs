@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class bulletController : MonoBehaviour {
-    private float speed;
+    public float damage;
+    public float speed;
     private GameObject target;
 	// Use this for initialization
 	void Start () {
@@ -15,19 +16,27 @@ public class bulletController : MonoBehaviour {
         float step = speed * Time.deltaTime;
         if (target != null)
         {
-            Debug.Log("Bulletmove");
-            Debug.Log(target.gameObject.name);
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
             if (transform.position == target.transform.position)
             {
+                target.GetComponent<enemyController>().removeHealth(damage);
                 Destroy(this.gameObject);
             }
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
 	}
-
+    
+    public void setDamage(float damage)
+    {
+        this.damage = damage;
+    }
     public void setTarget(GameObject target)
     {
         this.target = target;
     }
+
 }

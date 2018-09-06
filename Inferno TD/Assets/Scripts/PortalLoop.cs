@@ -18,21 +18,21 @@ public class PortalLoop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Color c = sp.color;
-        if (c.g > 1)
+        if (c.b > 1)
         {
             adding = 0;
         }
-        if (c.g < 0)
+        if (c.b < 0)
         {
             adding = 1;
         }
         if(adding == 1)
         {
-            c.g+=0.01f;
+            c.b+=0.01f;
         }
         if(adding == 0)
         {
-            c.g-=0.01f;
+            c.b-=0.01f;
         }
         sp.color = c;
     }
