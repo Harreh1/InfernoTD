@@ -15,12 +15,15 @@ public class bulletController : MonoBehaviour {
         float step = speed * Time.deltaTime;
         if (target != null)
         {
+            Debug.Log("Bulletmove");
+            Debug.Log(target.gameObject.name);
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            if (transform.position == target.transform.position)
+            {
+                Destroy(this.gameObject);
+            }
         }
-        if(transform.position == target.transform.position)
-        {
-            Destroy(this.gameObject);
-        }
+
 	}
 
     public void setTarget(GameObject target)

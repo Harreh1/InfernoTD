@@ -23,10 +23,12 @@ public class towerController : MonoBehaviour {
     {
         if(collision.gameObject.tag == "enemy")
         {
-            Instantiate(bullet);
-            bullet.transform.position = this.gameObject.transform.position;
-            //bullet.gameObject.
-            //bc.setTarget(collision.gameObject);
+            GameObject bulletInGame = Instantiate(bullet);
+            bulletInGame.transform.position = this.gameObject.transform.position;
+            bulletInGame.GetComponent<bulletController>().setTarget(collision.gameObject);
+            
         }
     }
+
+    
 }
