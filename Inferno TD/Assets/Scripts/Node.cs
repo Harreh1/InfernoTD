@@ -5,6 +5,7 @@ using UnityEngine;
 /**
  * Class based on the tutorial by brackeys.
  * Available at: https://www.youtube.com/watch?v=t7GuWvP_IEQ
+ * Last accessed 6/09/2018
  **/
 
 public class Node : MonoBehaviour {
@@ -24,9 +25,12 @@ public class Node : MonoBehaviour {
 
         if (turretToBuild != null)
         {
-            buildManager.instance.subtractMoney(turretToBuild.GetComponent<towerController>().getCost());
-            turretToBuild = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
-            transform.position = new Vector3(transform.position.x, transform.position.y, 3);
+            if(buildManager.instance.GetMoney() > 80)
+            {
+                buildManager.instance.subtractMoney(turretToBuild.GetComponent<towerController>().getCost());
+                turretToBuild = (GameObject)Instantiate(turretToBuild, new Vector3(transform.position.x, transform.position.y, 0.5f), transform.rotation);
+                transform.position = new Vector3(transform.position.x, transform.position.y, 3);
+            }
         } else
         {
 

@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour {
     void NextWave()
     {
         wave++;
-        spawnRate -= 0.1f;
+        spawnRate -= 0.2f;
     }
 
     void OnMouseDown()
@@ -40,9 +40,10 @@ public class WaveSpawner : MonoBehaviour {
 
     //Carotine Spawner modified from brackeys tutorial
     //Available at: https://www.youtube.com/watch?v=n2DXF1ifUbU&t=566s
+    //Last accessed 6/09/2018
     IEnumerator SpawnWave()
     {
-        for(int i=0; i< wave * 2 +1; i++)
+        for(int i=0; i< wave * 3; i++)
         {
             Instantiate(enemy1, spawnPortal.transform.position, spawnPortal.transform.rotation);
             yield return new WaitForSeconds(spawnRate);

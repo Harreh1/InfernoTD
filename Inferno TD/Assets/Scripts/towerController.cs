@@ -8,7 +8,7 @@ public class towerController : MonoBehaviour {
     public float range;
     public float damage;
     public int cost;
-    public int level;
+    public int level =1;
     public GameObject bullet;
     private float lastShot = 0.0f;
     private float fireRate = 0.5f;
@@ -16,12 +16,21 @@ public class towerController : MonoBehaviour {
     public Sprite levelThreeSprite;
     public GameObject levelTwoBullet;
     public GameObject upgrade;
+    public GameObject rangeIndicator;
+    private SpriteRenderer rangeSprite;
+    int init = 0;
+    public GameObject rangeCircle;
 	// Use this for initialization
 	void Start () {
         this.gameObject.GetComponent<CircleCollider2D>().radius = range;
         level = 1;
         upgrade = GameObject.FindGameObjectWithTag("upgrade");
-
+        GameObject rangeCircle = Instantiate(rangeIndicator);
+        rangeCircle.transform.SetParent(this.transform);
+        rangeCircle.transform.localPosition = new Vector3(0, 0, -7);
+        rangeCircle.transform.localScale += new Vector3((float)10.6 * range, (float)10.6 * range, 0);
+        rangeSprite = rangeCircle.GetComponent<SpriteRenderer>();
+        rangeSprite.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -34,8 +43,9 @@ public class towerController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "enemy")
         {
-
-            //If statement taken from https://answers.unity.com/questions/132154/how-to-limit-the-players-rate-of-fire.html 
+            //(How to set the fire rate) retreived from unity answers: How to limit the players rate of fire
+            //Only the if statement taken from https://answers.unity.com/questions/132154/how-to-limit-the-players-rate-of-fire.html 
+            //Last accessed 06/09/2018
             if (Time.time > fireRate + lastShot)
             {
                 //Code to rotate turret to face target taken from https://answers.unity.com/questions/1350050/how-do-i-rotate-a-2d-object-to-face-another-object.html
@@ -64,21 +74,29 @@ public class towerController : MonoBehaviour {
         return cost;
     }
 
-    public void LevelUp()
+    public int getLevel()
+    {
+        return level;
+    }
+    public bool LevelUp()
     {
         if(level == 1)
         {
-            damage *= 1.3f;
+            damage *= 1.2f;
             level++;
-            gameObject.GetComponent<SpriteRenderer>().sprite = levelTwoSprite;
+            gameObject.GetComponent<SpriteRenderer>().sprite = levelThreeSprite;
             bullet = levelTwoBullet;
+            return true;
         }
         else if (level == 2)
         {
+            damage *= 0.6f;
             fireRate *= 0.5f; ;
             level++;
             gameObject.GetComponent<SpriteRenderer>().sprite = levelThreeSprite;
+            return true;
         }
+        return false;
 
     }
 
@@ -89,7 +107,7 @@ public class towerController : MonoBehaviour {
         {
             upgrade.SetActive(true);
             upgrade.GetComponent<upgradeCon>().SetTower(this.gameObject);
-
+            //rangeSprite.enabled = true;
         }
 
     }

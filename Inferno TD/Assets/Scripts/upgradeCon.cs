@@ -16,8 +16,11 @@ public class upgradeCon : MonoBehaviour {
         {
             if(buildManager.instance.GetMoney() >= 50)
             {
-                tower.GetComponent<towerController>().LevelUp();
-                buildManager.instance.subtractMoney(50);
+                bool b = tower.GetComponent<towerController>().LevelUp();
+                if (b)
+                {
+                    buildManager.instance.subtractMoney(50);
+                }
             }
         }
     }

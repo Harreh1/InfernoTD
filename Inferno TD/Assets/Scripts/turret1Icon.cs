@@ -9,6 +9,7 @@ public class turret1Icon : MonoBehaviour {
 
     public GameObject turret1;
 
+    private GameObject sampleTurret;
     private bool active;
     // Use this for initialization
     void Start () {
@@ -37,6 +38,7 @@ public class turret1Icon : MonoBehaviour {
         } else
         {
             active = false;
+            sampleTurret.SetActive(false);
         }
 
     }

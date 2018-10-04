@@ -7,7 +7,7 @@ public class enemyController : MonoBehaviour {
 
     public float Speed;
     public int value;
-    private Vector3[] enemyPath = new Vector3[8];
+    private Vector3[] enemyPath = new Vector3[6];
     private int currentTarget = 1;
     private float health = 100f;
     private float MaxHealth = 100f;
@@ -16,24 +16,22 @@ public class enemyController : MonoBehaviour {
     private Slider currentHealthbar;
 	// Use this for initialization
 	void Start () {
-        enemyPath[0] = new Vector3(-1.973324f + 0.43f, -0.5282958f, 0f);
-        enemyPath[1] = new Vector3(-0.696f + 0.43f, -0.5282958f, 0f);
-        enemyPath[2] = new Vector3(-0.696f + 0.43f, 0.749f, 0f);
-        enemyPath[3] = new Vector3(1.213676f + 0.43f, 0.749f, 0f);
-        enemyPath[4] = new Vector3(1.213676f + 0.43f, -1.807f, 0f);
-        enemyPath[5] = new Vector3(3.128352f + 0.43f, -1.807f, 0f);
-        enemyPath[6] = new Vector3(3.128352f + 0.43f, -0.5282958f, 0f);
-        enemyPath[7] = new Vector3(4.405676f + 0.43f, -0.5282958f, 0f);
+        enemyPath[0] = new Vector3(-0.108f, -0.171f, 0f);
+        enemyPath[1] = new Vector3(-0.108f, 1.294f, 0f);
+        enemyPath[2] = new Vector3(2f, 1.294f, 0f);
+        enemyPath[3] = new Vector3(2f, -2.37f, 0f);
+        enemyPath[4] = new Vector3(4.14f, -2.37f, 0f);
+        enemyPath[5] = new Vector3(4.14f, -0.91f, 0f);
 
         currentHealthbar = Instantiate(healthBar);
-        currentHealthbar.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        currentHealthbar.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, -0.1f);
         currentHealthbar.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        currentHealthbar.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        currentHealthbar.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, -0.1f);
         currentHealthbar.value = health / MaxHealth;
         checkHealth();
         float step = Speed * Time.deltaTime;
@@ -42,7 +40,7 @@ public class enemyController : MonoBehaviour {
         {
             currentTarget++;
         }
-        if(currentTarget == 8)
+        if(currentTarget == enemyPath.Length)
         {
             buildManager.instance.subtractHealth(1);
             Destroy(this.gameObject);

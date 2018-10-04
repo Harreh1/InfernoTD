@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530005143363444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.36249995, y: -0.5282958, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.1091999, y: 1.1947501, z: -1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,15 +90,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 1.5
-  damage: 13
+  damage: 16.9
   cost: 80
-  level: 3
-  bullet: {fileID: 1587610431023102, guid: b74571bdd97c1be46ae8d13dba19053c, type: 2}
+  level: 5
+  bullet: {fileID: 1587610431023102, guid: 0fee695730e740d488c0376134f125f6, type: 2}
   levelTwoSprite: {fileID: 21300000, guid: 70d2988940932f046a1d816f1ca18ab3, type: 3}
   levelThreeSprite: {fileID: 21300000, guid: 21dd12f0314b08a4cb249c0f48fb1eda, type: 3}
   levelTwoBullet: {fileID: 1587610431023102, guid: e1cd16a88696a394b9ac9bc4abad4043,
     type: 2}
-  upgrade: {fileID: 1875433964569248, guid: 81188b6f08b7653448870fa7a08afd7c, type: 2}
+  upgrade: {fileID: 0}
+  rangeIndicator: {fileID: 1814159167505090, guid: fd3aab9c41c040840b0dfd566e58939d,
+    type: 2}
+  rangeCircle: {fileID: 0}
 --- !u!212 &212114564908013564
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -133,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 2c4456282afcbb24fb1e8e51d0be177e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
