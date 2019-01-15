@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 212114564908013564}
   m_Layer: 0
   m_Name: Tower1
-  m_TagString: Untagged
+  m_TagString: tower1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,10 @@ MonoBehaviour:
   cost: 80
   level: 5
   bullet: {fileID: 1587610431023102, guid: 0fee695730e740d488c0376134f125f6, type: 2}
-  levelTwoSprite: {fileID: 21300000, guid: 70d2988940932f046a1d816f1ca18ab3, type: 3}
-  levelThreeSprite: {fileID: 21300000, guid: 21dd12f0314b08a4cb249c0f48fb1eda, type: 3}
-  levelTwoBullet: {fileID: 1587610431023102, guid: e1cd16a88696a394b9ac9bc4abad4043,
+  levelTwoSprite: {fileID: 21300000, guid: 4161d7a31611d2c4c81fb0ef851b8fbf, type: 3}
+  levelThreeSprite: {fileID: 21300000, guid: 5f39beb48f825474caa0046504807fc5, type: 3}
+  levelFourSprite: {fileID: 21300000, guid: 8c6f08e942be3b4409662f6786ab1c98, type: 3}
+  levelTwoBullet: {fileID: 1587610431023102, guid: 6e2bf28810756ce44a78a66b43163437,
     type: 2}
   upgrade: {fileID: 0}
   rangeIndicator: {fileID: 1814159167505090, guid: fd3aab9c41c040840b0dfd566e58939d,

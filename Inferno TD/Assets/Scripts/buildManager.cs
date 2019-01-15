@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 //Class structured from tutorial by brackeys. Edits have been made beyond basic placing of turret.
 //Available at: https://www.youtube.com/watch?v=t7GuWvP_IEQ
 //Last accessed 7/09/2018
@@ -10,7 +9,6 @@ public class buildManager : MonoBehaviour {
     public static buildManager instance;
 
     private GameObject turretToBuild;
-
     public GameObject icon1;
     private int lives;
 
@@ -68,4 +66,5 @@ public class buildManager : MonoBehaviour {
     {
 
     }
+
 }

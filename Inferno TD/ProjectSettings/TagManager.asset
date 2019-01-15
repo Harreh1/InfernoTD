@@ -7,6 +7,10 @@ TagManager:
   - enemy
   - Canvas
   - upgrade
+  - tower1
+  - tower2
+  - invis
+  - shield
   layers:
   - Default
   - TransparentFX

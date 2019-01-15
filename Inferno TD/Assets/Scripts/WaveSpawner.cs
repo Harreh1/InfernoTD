@@ -8,9 +8,14 @@ public class WaveSpawner : MonoBehaviour {
     public GameObject spawnPortal;
     public float spawnRate = 2f;
     public GameObject enemy1;
+    public GameObject enemy2;
+
+    public GameObject enemy3;
 
     private SpriteRenderer rend;
     public Color hoverColor;
+    public Sprite normal;
+    public Sprite hover;
 	// Use this for initialization
 	void Start () {
         wave = 1;
@@ -29,6 +34,24 @@ public class WaveSpawner : MonoBehaviour {
 
     void OnMouseDown()
     {
+        if (wave == 3)
+        {
+            StartCoroutine(SpawnWave2(1));
+        }
+        if(wave == 5)
+        {
+            StartCoroutine(SpawnWave3(1));
+        }
+        if(wave == 7)
+        {
+            StartCoroutine(SpawnWave3(3));
+            StartCoroutine(SpawnWave2(3));
+        }
+        if (wave == 7)
+        {
+            StartCoroutine(SpawnWave3(10));
+            StartCoroutine(SpawnWave2(10));
+        }
         StartCoroutine(SpawnWave());
         
     }
@@ -43,7 +66,8 @@ public class WaveSpawner : MonoBehaviour {
     //Last accessed 6/09/2018
     IEnumerator SpawnWave()
     {
-        for(int i=0; i< wave * 3; i++)
+        yield return new WaitForSeconds(1f);
+        for (int i=0; i< wave * 4; i++)
         {
             Instantiate(enemy1, spawnPortal.transform.position, spawnPortal.transform.rotation);
             yield return new WaitForSeconds(spawnRate);
@@ -52,13 +76,34 @@ public class WaveSpawner : MonoBehaviour {
 
     }
 
+    IEnumerator SpawnWave2(int k)
+    {
+        for (int i = 0; i < k; i++)
+        {
+            Instantiate(enemy2, spawnPortal.transform.position, spawnPortal.transform.rotation);
+            yield return new WaitForSeconds(spawnRate);
+        }
+
+    }
+
+    IEnumerator SpawnWave3(int k)
+    {
+        for (int i = 0; i < k; i++)
+        {
+            Instantiate(enemy3, spawnPortal.transform.position, spawnPortal.transform.rotation);
+            yield return new WaitForSeconds(spawnRate);
+        }
+
+    }
+
+
     void OnMouseEnter()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = hoverColor;
+        gameObject.GetComponent<SpriteRenderer>().sprite = hover;
     }
 
     void OnMouseExit()
     {
-        rend.color = Color.white;
+        rend.sprite = normal;
     }
 }
